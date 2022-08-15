@@ -120,22 +120,6 @@ border: 1px solid #EABCCF;
     background-color: #2f2f2f;
   }
 
-  /*#grad1 {
-    background-image: linear-gradient(220deg, #2f2f2f, #be93a5);
-  }
-  html {
-    height:100%;
-  }*/
-
-  #grad1 {
-    background: linear-gradient(329deg, #2f2f2f, #aa8394);
-    background-size: 500% 500%;
-
-    -webkit-animation: AnimationName 11s ease infinite;
-    -moz-animation: AnimationName 11s ease infinite;
-    animation: AnimationName 11s ease infinite;
-}
-
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 43%}
     50%{background-position:100% 58%}

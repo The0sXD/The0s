@@ -1,0 +1,42 @@
+<div class="container-header">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="margin-left: 6em; margin-right: 6em;">
+    <div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+     <!-- <img class=""mt-4 src="" height="100" alt="Logo"> -->
+    </div>
+    <div class="col-md-3 text-end">
+      <!-- <button id="myBtn" class="bttn bttnSu bttnMv">Sign-In</button>-->
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+          <div class="modal-body">
+            <div class="text-center mt-5 loginpagestyle">
+              <h2>Login to Aethos</h2>
+              <form style="max-width:300px; margin:auto;" action="second.html" method="GET">
+                <!----Email Section---->
+                <!--Label For Email Input Form-->
+                <label for="emailAddress" class="visually-hidden">Email </label>
+                <!--Form used for user input to get email address-->
+                <input type="email" id="emailAddress" class="form-control inputboxemail" placeholder="Email Address" required autofocus>
+                <!----Password Section---->
+                <!--Label For Password Input Form-->
+                <label for="password" class="visually-hidden">Password</label>
+                <!--Form used for user input to get password-->
+                <input type="password" id="password" placeholder="Password" class="form-control inputboxpassword" required >
+                <!--Buttons Section-->
+                <div class="checkbox text-left">
+                    <label>
+                      <input type="checkbox" value="Remember-Me"> Remember me
+                    </label>
+                </div>
+                <div>
+                  <button type="button" id="Signin" onclick="gotoNextPg()" class="bttn">Sign in</button>
+                </div>
+              </form> 
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>

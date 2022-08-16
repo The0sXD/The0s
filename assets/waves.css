@@ -1,13 +1,13 @@
-.bodywaves {
+.bgWaves {
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;
   background: linear-gradient(
     315deg,
-    rgba(101, 0, 94, 1) 3%,
-    rgba(60, 132, 206, 1) 38%,
-    rgba(48, 238, 226, 1) 68%,
-    rgba(255, 25, 25, 1) 98%
+    hsl(304, 100%, 20%) 3%,
+    hsl(210, 60%, 52%) 38%,
+    hsl(176, 85%, 56%) 68%,
+    hsl(0, 100%, 55%) 98%
   );
   animation: gradient 15s ease infinite;
   background-size: 400% 400%;
@@ -73,7 +73,7 @@
     transform: translateX(1);
   }
 }
-body {
+.wave-body21 {
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;

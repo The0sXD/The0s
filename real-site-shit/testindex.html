@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The0s Test Site</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The0s Dev's Site">
+    <meta name="keywords" content="HTML, CSS, JavaScript,The0s,The0s Test Site, project,New,soon">
+    
+    <!-- Tab Logo Icon -->
+    <link rel="icon" href="../assets/the0s-Tab-Icon-Logo.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link href="../assets/scrollbar.css" rel="stylesheet">
+    <link href="../assets/waves.css" rel="stylesheet">
+    <link href="../assets/pink-breathing-bg-effect.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+    <div class="container-header">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="margin-left: 6em; margin-right: 6em;">
+            <div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img class="mt-4 w-32" src="../assets/the0s-Logo.png" alt="Logo">
+            </div>
+            <div class="col-md-3 text-end">
+                <button id="myBtn" class="bttn bttnSu bttnMv">Sign-In</button>
+            </div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center mt-5 loginpagestyle">
+                            <h2>Login to The0s' Site</h2>
+                            <form style="max-width:300px; margin:auto;" action="second.html" method="GET">
+                                <!-- Email Section -->
+                                <label for="emailAddress" class="visually-hidden">Email</label>
+                                <input type="email" id="emailAddress" class="form-control inputboxemail" placeholder="Email Address" required autofocus>
+                                <!-- Password Section -->
+                                <label for="password" class="visually-hidden">Password</label>
+                                <input type="password" id="password" placeholder="Password" class="form-control inputboxpassword" required>
+                                <!-- Buttons Section -->
+                                <div class="checkbox text-left">
+                                    <label>
+                                        <input type="checkbox" value="Remember-Me"> Remember me
+                                    </label>
+                                </div>
+                                <div>
+                                    <button type="button" id="Signin" onclick="gotoNextPg()" class="bttn">Sign in</button>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="landingPageText">
+        <div class="headerLP">
+            This is a test site for my new projects
+        </div>
+    </div>
+    <div class="centerShit">
+      <div class="relative inline-flex group">
+          <div class="absolute transition-all duration-1000 opacity-40 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-2 group-hover:duration-150 animate-tilt"></div>
+          <a href="../Money-Management/moneyindex.html" title="New Project" class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900" role="button">New Project</a>
+      </div>
+    </div>
+  
+
+    <script>
+        // Modal handling
+        const modal = document.getElementById("myModal");
+        const btn = document.getElementById("myBtn");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

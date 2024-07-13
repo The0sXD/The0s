@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Transaction Parser</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-blue-500 text-white py-4">
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold">Simple Money Management</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
+        <section class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Upload Bank Statement PDF</h2>
+            <form id="pdf-upload-form" class="space-y-4">
+                <input type="file" id="pdf-file" accept="application/pdf" required>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Upload and Parse</button>
+            </form>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold mb-2">Parsed Transactions</h2>
+            <div id="parsed-transactions" class="bg-gray-100 p-4 rounded-md">
+                <!-- Parsed transactions will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('pdf-upload-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Form submission prevented.');
+    
+            const fileInput = document.getElementById('pdf-file');
+            const formData = new FormData();
+            formData.append('pdf', fileInput.files[0]);
+    
+            try {
+                console.log('Uploading file...');
+                const response = await fetch('http://127.0.0.1:5000/upload-pdf', {  
+                    method: 'POST',
+                    body: formData
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+    
+                const transactions = await response.json();
+                console.log('Parsed transactions:', transactions);  
+                displayTransactions(transactions);
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+        });
+    
+        function displayTransactions(transactions) {
+            console.log('Displaying transactions...');
+            const container = document.getElementById('parsed-transactions');
+            container.innerHTML = '';
+    
+            transactions.forEach(transaction => {
+                const div = document.createElement('div');
+                div.className = 'p-2 rounded-md mb-2 bg-gray-200';
+                div.innerHTML = `
+                    <strong>Date:</strong> ${transaction.date}<br>
+                    <strong>Description:</strong> ${transaction.description}<br>
+                    <strong>Amount:</strong> $${transaction.amount.toFixed(2)}
+                `;
+                container.appendChild(div);
+            });
+    
+            console.log('Transactions displayed.');
+        }
+    </script>    
+</body>
+</html>

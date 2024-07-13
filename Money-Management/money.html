@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ur Money Helper</title>
+    <meta name="description" content="A simple money management website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="bg-blue-500 text-white py-4">
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold">Ur Money Helper</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
+        <section class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Manual Input Of Income/Expense</h2>
+            <form id="transaction-form" class="space-y-4">
+                <div>
+                    <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+                    <select id="type" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <input type="text" id="description" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
+                    <input type="number" id="amount" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Add Transaction</button>
+            </form>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold mb-2">Summary</h2>
+            <div class="bg-gray-100 p-4 rounded-md">
+                <div class="mb-2">
+                    <span class="font-medium">Balance:</span>
+                    <span id="balance" class="text-green-500">$0.00</span>
+                </div>
+                <div class="mb-2">
+                    <span class="font-medium">Total Income:</span>
+                    <span id="total-income" class="text-green-500">$0.00</span>
+                </div>
+                <div>
+                    <span class="font-medium">Total Expenses:</span>
+                    <span id="total-expenses" class="text-red-500">$0.00</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-semibold">Transaction History</h2>
+                <button id="edit-transactions" class="bg-yellow-500 text-white px-4 py-2 rounded-md">Edit Transactions</button>
+            </div>
+            <ul id="transaction-history" class="bg-gray-100 p-4 rounded-md space-y-2">
+                <!-- Transactions will be dynamically added here -->
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold mb-2">Graphs</h2>
+            <div class="bg-gray-100 p-4 rounded-md">
+                <canvas id="lineChart"></canvas>
+                <canvas id="pieChart" class="mt-4"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const lineChartCtx = document.getElementById('lineChart').getContext('2d');
+        const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+
+        let transactions = [];
+        let balance = 0;
+        let totalIncome = 0;
+        let totalExpenses = 0;
+
+        let lineChart = new Chart(lineChartCtx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Balance',
+                    data: [],
+                    borderColor: '#3b82f6',
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        let pieChart = new Chart(pieChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Income', 'Expense'],
+                datasets: [{
+                    label: 'Amount',
+                    data: [0, 0],
+                    backgroundColor: ['#10B981', '#EF4444'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        document.getElementById('transaction-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const type = document.getElementById('type').value;
+
+            const transaction = { description, amount, type };
+            transactions.push(transaction);
+
+            if (type === 'income') {
+                balance += amount;
+                totalIncome += amount;
+                pieChart.data.datasets[0].data[0] += amount;
+            } else {
+                balance -= amount;
+                totalExpenses += amount;
+                pieChart.data.datasets[0].data[1] += amount;
+            }
+
+            document.getElementById('balance').textContent = `$${balance.toFixed(2)}`;
+            document.getElementById('total-income').textContent = `$${totalIncome.toFixed(2)}`;
+            document.getElementById('total-expenses').textContent = `$${totalExpenses.toFixed(2)}`;
+
+            addTransactionToHistory(transaction);
+            updateLineChart();
+            pieChart.update();
+
+            document.getElementById('transaction-form').reset();
+        });
+
+        document.getElementById('edit-transactions').addEventListener('click', function () {
+            toggleEditTransactions();
+        });
+
+        function toggleEditTransactions() {
+            const transactionItems = document.querySelectorAll('#transaction-history li');
+
+            transactionItems.forEach(item => {
+                const description = item.querySelector('.description');
+                const amount = item.querySelector('.amount');
+
+                description.contentEditable = description.contentEditable === "true" ? "false" : "true";
+                amount.contentEditable = amount.contentEditable === "true" ? "false" : "true";
+
+                if (description.contentEditable === "true") {
+                    item.classList.add('bg-yellow-100');
+                    item.querySelector('.save-transaction').classList.remove('hidden');
+                } else {
+                    item.classList.remove('bg-yellow-100');
+                    item.querySelector('.save-transaction').classList.add('hidden');
+                }
+            });
+        }
+
+        function addTransactionToHistory(transaction) {
+            const transactionHistory = document.getElementById('transaction-history');
+            const transactionItem = document.createElement('li');
+            transactionItem.className = `p-2 rounded-md flex justify-between items-center ${transaction.type === 'income' ? 'bg-green-100' : 'bg-red-100'}`;
+            transactionItem.innerHTML = `
+                <span class="description">${transaction.description}</span>
+                <span class="amount">$${transaction.amount.toFixed(2)}</span>
+                <div class="flex space-x-2">
+                    <button class="save-transaction bg-green-500 text-white p-1 rounded hidden">Save</button>
+                    <button class="delete-transaction bg-red-500 text-white p-1 rounded">X</button>
+                </div>
+            `;
+            transactionHistory.appendChild(transactionItem);
+
+            transactionItem.querySelector('.delete-transaction').addEventListener('click', function () {
+                deleteTransaction(transaction, transactionItem);
+            });
+
+            transactionItem.querySelector('.save-transaction').addEventListener('click', function () {
+                saveTransaction(transaction, transactionItem);
+            });
+        }
+
+        function deleteTransaction(transaction, transactionItem) {
+            transactions = transactions.filter(t => t !== transaction);
+
+            if (transaction.type === 'income') {
+                balance -= transaction.amount;
+                totalIncome -= transaction.amount;
+                pieChart.data.datasets[0].data[0] -= transaction.amount;
+            } else {
+                balance += transaction.amount;
+                totalExpenses -= transaction.amount;
+                pieChart.data.datasets[0].data[1] -= transaction.amount;
+            }
+
+            document.getElementById('balance').textContent = `$${balance.toFixed(2)}`;
+            document.getElementById('total-income').textContent = `$${totalIncome.toFixed(2)}`;
+            document.getElementById('total-expenses').textContent = `$${totalExpenses.toFixed(2)}`;
+
+            updateLineChart();
+            pieChart.update();
+
+            transactionItem.remove();
+        }
+
+        function saveTransaction(transaction, transactionItem) {
+            const newDescription = transactionItem.querySelector('.description').textContent;
+            const newAmount = parseFloat(transactionItem.querySelector('.amount').textContent.replace('$', ''));
+
+            if (transaction.type === 'income') {
+                balance -= transaction.amount;
+                totalIncome -= transaction.amount;
+                pieChart.data.datasets[0].data[0] -= transaction.amount;
+
+                transaction.amount = newAmount;
+                balance += newAmount;
+                totalIncome += newAmount;
+                pieChart.data.datasets[0].data[0] += newAmount;
+            } else {
+                balance += transaction.amount;
+                totalExpenses -= transaction.amount;
+                pieChart.data.datasets[0].data[1] -= transaction.amount;
+
+                transaction.amount = newAmount;
+                balance -= newAmount;
+                totalExpenses += newAmount;
+                pieChart.data.datasets[0].data[1] += newAmount;
+            }
+
+            transaction.description = newDescription;
+
+            document.getElementById('balance').textContent = `$${balance.toFixed(2)}`;
+            document.getElementById('total-income').textContent = `$${totalIncome.toFixed(2)}`;
+            document.getElementById('total-expenses').textContent = `$${totalExpenses.toFixed(2)}`;
+
+            updateLineChart();
+            pieChart.update();
+
+            toggleEditTransactions();
+        }
+
+        function updateLineChart() {
+            lineChart.data.labels = transactions.map((_, index) => `Transaction ${index + 1}`);
+            lineChart.data.datasets[0].data = transactions.reduce((acc, transaction) => {
+                if (transaction.type === 'income') {
+                    acc.push((acc[acc.length - 1] || 0) + transaction.amount);
+                } else {
+                    acc.push((acc[acc.length - 1] || 0) - transaction.amount);
+                }
+                return acc;
+            }, []);
+            lineChart.update();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fintech App - Money Management</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Manage your money better with our app.">
+    <meta name="keywords" content="fintech, money management, budget, finance app">
+    
+    <!-- Tab Logo Icon -->
+    <link rel="icon" href="path/to/your/logo.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="path/to/your/styles.css">
+    <link href="path/to/your/scrollbar.css" rel="stylesheet">
+    <link href="path/to/your/waves.css" rel="stylesheet">
+    <link href="path/to/your/pink-breathing-bg-effect.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+    <div class="container-header">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="margin-left: 6em; margin-right: 6em;">
+            <div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img class="mt-4 w-32" src="path/to/your/logo.png" alt="Logo">
+            </div>
+            <div class="col-md-3 text-end">
+                <button id="myBtn" class="bttn bttnSu bttnMv">Sign-In</button>
+            </div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center mt-5 loginpagestyle">
+                            <h2>Login to Our App</h2>
+                            <form style="max-width:300px; margin:auto;" action="second.html" method="GET">
+                                <!-- Email Section -->
+                                <label for="emailAddress" class="visually-hidden">Email</label>
+                                <input type="email" id="emailAddress" class="form-control inputboxemail" placeholder="Email Address" required autofocus>
+                                <!-- Password Section -->
+                                <label for="password" class="visually-hidden">Password</label>
+                                <input type="password" id="password" placeholder="Password" class="form-control inputboxpassword" required>
+                                <!-- Buttons Section -->
+                                <div class="checkbox text-left">
+                                    <label>
+                                        <input type="checkbox" value="Remember-Me"> Remember me
+                                    </label>
+                                </div>
+                                <div>
+                                    <button type="button" id="Signin" onclick="gotoNextPg()" class="bttn">Sign in</button>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+     <!-- whole page div -->
+    <div class="Main-Content flex flex-col p-30 justify-between space-y-60">
+   
+    <!-- Landing Page Text -->
+    <div class="landingPageText text-center min-h-screen flex flex-col justify-center items-center">
+        <h1 class="text-4xl font-bold">Manage Your Money Better</h1>
+        <p class="mt-4 text-lg">Track your spending, set budgets, and achieve your financial goals with our app.</p>
+        <a href="#" class="mt-6 inline-block bg-pink-500 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-pink-600 transition">Request a Demo</a>
+    </div>
+
+    <!-- About Us Section -->
+    <section class="text-center py-12 mt-40">
+        <h2 class="text-3xl font-bold">About Us</h2>
+        <div class="max-w-3xl mx-auto mt-4">
+            <p class="text-lg">
+                At The0s, our mission is to empower young professionals and families to take control of their financial future. We believe effective money management is the key to achieving financial freedom. Our dedicated team of finance experts, software developers, and customer support specialists work tirelessly to bring you an app that simplifies budgeting, tracks expenses, and offers personalized financial advice.
+            </p>
+            <p class="mt-4 text-lg">
+                Passionate about making financial management accessible to everyone, we are committed to helping you reach your financial goals. Join us on this journey to financial wellness and take the first step towards a brighter financial future with The0s.
+            </p>
+            <p class="mt-4 text-lg">
+                Learn more about our mission and the team behind our app.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="text-center py-12 bg-gray-800 text-white">
+        <h2 class="text-4xl font-bold">Features</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Budget Tracking Feature -->
+            <div class="flex flex-col items-center p-4">
+                <img src="path/to/budget-tracking-icon.png" alt="Budget Tracking Icon" class="w-16 h-16 mb-4">
+                <h3 class="text-xl font-semibold">Budget Tracking</h3>
+                <p class="mt-2">Keep track of your spending and stay within your budget.</p>
+                <p class="mt-2 text-sm">Set monthly limits, view detailed reports, and get notifications to ensure you never overspend. Visualize your spending patterns with charts and graphs, adjust your budget for various financial goals, and receive real-time updates on your financial status. Create multiple budgets for different categories like groceries, entertainment, and travel, ensuring comprehensive financial control.</p>
+            </div>
+            <!-- Expense Categorization Feature -->
+            <div class="flex flex-col items-center p-4">
+                <img src="path/to/expense-categorization-icon.png" alt="Expense Categorization Icon" class="w-16 h-16 mb-4">
+                <h3 class="text-xl font-semibold">Expense Categorization</h3>
+                <p class="mt-2">Categorize your expenses to see where your money is going.</p>
+                <p class="mt-2 text-sm">Automatically sort your transactions into categories like groceries, utilities, and entertainment. Customize categories to fit your spending habits and receive insights into areas where you can save. Get monthly and yearly breakdowns, track spending trends, and set alerts for overspending in any category. Link your accounts for automatic updates and more accurate categorization.</p>
+            </div>
+            <!-- Financial Advice Feature -->
+            <div class="flex flex-col items-center p-4">
+                <img src="path/to/financial-advice-icon.png" alt="Financial Advice Icon" class="w-16 h-16 mb-4">
+                <h3 class="text-xl font-semibold">Financial Advice</h3>
+                <p class="mt-2">Get personalized financial advice to help you reach your goals.</p>
+                <p class="mt-2 text-sm">Receive tips and recommendations based on your spending habits and financial objectives. Benefit from expert guidance tailored to your financial situation, whether you're saving for a major purchase, planning for retirement, or improving your financial health. Access resources, articles, and tools designed to empower you with knowledge for smart financial decisions. Set financial goals and track your progress with actionable insights.</p>
+            </div>
+            <!-- Savings Goals Feature -->
+            <div class="flex flex-col items-center p-4">
+                <img src="path/to/savings-goals-icon.png" alt="Savings Goals Icon" class="w-16 h-16 mb-4">
+                <h3 class="text-xl font-semibold">Savings Goals</h3>
+                <p class="mt-2">Plan and achieve your savings goals effectively.</p>
+                <p class="mt-2 text-sm">Set specific savings goals, track your progress, and get motivated to reach your targets. Use our goal tracker to monitor your savings for vacations, emergencies, or any personal milestones. Get tips on optimizing your savings and receive alerts to keep you on track.</p>
+            </div>
+            <!-- Bill Reminders Feature -->
+            <div class="flex flex-col items-center p-4">
+                <img src="path/to/bill-reminders-icon.png" alt="Bill Reminders Icon" class="w-16 h-16 mb-4">
+                <h3 class="text-xl font-semibold">Bill Reminders</h3>
+                <p class="mt-2">Never miss a bill payment again.</p>
+                <p class="mt-2 text-sm">Set up reminders for all your bills and receive notifications before they are due. Avoid late fees and manage all your bill payments from one place. Schedule automatic payments and track your bill history to ensure you're always on top of your finances.</p>
+            </div>
+            <!-- Investment Tracking Feature -->
+            <div class="flex flex-col items-center p-4">
+                <img src="path/to/investment-tracking-icon.png" alt="Investment Tracking Icon" class="w-16 h-16 mb-4">
+                <h3 class="text-xl font-semibold">Investment Tracking</h3>
+                <p class="mt-2">Monitor your investments and watch them grow.</p>
+                <p class="mt-2 text-sm">Track your portfolio performance, analyze your investment growth, and stay updated with market trends. Receive insights and recommendations to optimize your investment strategy. Access detailed reports and set alerts for significant market changes affecting your investments.</p>
+            </div>
+        </div>
+    </section>
+
+
+    
+    
+
+    <!-- Testimonials Section -->
+    <section class="text-center py-12">
+        <h2 class="text-3xl font-bold">Testimonials</h2>
+        <p class="mt-4 text-lg">Hear from our satisfied users.</p>
+        <div class="mt-8 space-y-8">
+            <div>
+                <p class="italic">"This app has transformed the way I manage my money! ⭐⭐⭐⭐⭐"</p>
+                <p class="mt-2 font-bold">- Jane Doe</p>
+            </div>
+            <div>
+                <p class="italic">"I love the expense categorization feature. It's so helpful! ⭐⭐⭐⭐⭐"</p>
+                <p class="mt-2 font-bold">- John Smith</p>
+            </div>
+            <div>
+                <p class="italic">"The financial advice has been a game changer for me. ⭐⭐⭐⭐⭐"</p>
+                <p class="mt-2 font-bold">- Emily Johnson</p>
+            </div>
+            <div>
+                <p class="italic">"Budget tracking has never been easier. Highly recommend! ⭐⭐⭐⭐⭐"</p>
+                <p class="mt-2 font-bold">- Michael Brown</p>
+            </div>
+            <div>
+                <p class="italic">"A must-have app for anyone serious about their finances. ⭐⭐⭐⭐⭐"</p>
+                <p class="mt-2 font-bold">- Sarah Wilson</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pricing Section -->
+    <section class="text-center py-12 bg-gray-800 text-white px-4 md:px-8">
+        <h2 class="text-3xl font-bold">Pricing</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 border rounded-lg">
+                <h3 class="text-xl font-semibold">Basic Plan</h3>
+                <p class="mt-4 text-2xl font-bold">$9.99/month</p>
+                <p class="mt-4">Includes basic features</p>
+                <a href="#" class="mt-4 inline-block bg-pink-500 text-white py-2 px-4 rounded-full hover:bg-pink-600 transition">Choose Plan</a>
+            </div>
+            <div class="p-8 border rounded-lg">
+                <h3 class="text-xl font-semibold">Pro Plan</h3>
+                <p class="mt-4 text-2xl font-bold">$19.99/month</p>
+                <p class="mt-4">Includes all features</p>
+                <a href="#" class="mt-4 inline-block bg-pink-500 text-white py-2 px-4 rounded-full hover:bg-pink-600 transition">Choose Plan</a>
+            </div>
+            <div class="p-8 border rounded-lg">
+                <h3 class="text-xl font-semibold">Enterprise Plan</h3>
+                <p class="mt-4 text-2xl font-bold">Contact Us</p>
+                <p class="mt-4">Custom solutions for businesses</p>
+                <a href="#" class="mt-4 inline-block bg-pink-500 text-white py-2 px-4 rounded-full hover:bg-pink-600 transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Countdown Section -->
+    <section class="text-center py-12">
+        <h2 class="text-3xl font-bold">Countdown to Release</h2>
+        <p class="mt-4 text-lg">Our app is launching soon. Stay tuned!</p>
+        <div id="countdown" class="mt-8 text-4xl font-bold"></div>
+    </section>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date();
+        countDownDate.setFullYear(countDownDate.getFullYear() + 1);
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+
+    
+
+    <script>
+        // Modal handling
+        const modal = document.get
+    </script>
+    </body>

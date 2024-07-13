@@ -1,0 +1,111 @@
+Date: 06/22
+Description: Payment Thank You-Mobile
+Amount: $-17.40
+
+Date: 06/22
+Description: Payment Thank You-Mobile
+Amount: $-129.58
+
+Date: 06/27
+Description: AUTOMATIC PAYMENT - THANK YOU
+Amount: $-600.39
+
+Date: 06/02
+Description: WAWA 5210 WINTER GARDEN FL
+Amount: $12.24
+
+Date: 06/03
+Description: SQ *SHAKE SHACK Orlando FL
+Amount: $17.55
+
+Date: 06/03
+Description: CC* CRUMBL MILLENIA 180-14101313 UT
+Amount: $22.99
+
+Date: 06/07
+Description: POKE HANA WINDERMERE WINDERMERE FL
+Amount: $15.98
+
+Date: 06/09
+Description: TST* SALT & STRAW - DISNE LAKE BUENA VI FL
+Amount: $4.66
+
+Date: 06/09
+Description: Uniqlo USA LLC New York NY
+Amount: $26.51
+
+Date: 06/07
+Description: SPEEDWAY 46811 CLEARWATER BE FL
+Amount: $2.50
+
+Date: 06/09
+Description: TST* SALT & STRAW - DISNE LAKE BUENA VI FL
+Amount: $12.89
+
+Date: 06/08
+Description: STARBUCKS STORE 19997 LAKE BUENA VI FL
+Amount: $7.40
+
+Date: 06/09
+Description: ACE SHIELD GROUP WINTER GARDEN FL
+Amount: $25.56
+
+Date: 06/08
+Description: BATH AND BODY WORKS 5094 WINTER GARDEN FL
+Amount: $32.85
+
+Date: 06/08
+Description: SEPHORA DISNEY SPRINGS LAKE BUENA VI FL
+Amount: $28.76
+
+Date: 06/10
+Description: LIGHT ON THE SUGAR BAKER WINTER PARK FL
+Amount: $21.73
+
+Date: 06/10
+Description: PHO HOA ORLANDO FL
+Amount: $61.01
+
+Date: 06/11
+Description: GNC WINTER GARDEN FL
+Amount: $2.99
+
+Date: 06/20
+Description: TST* HAWKERS ASIAN STREE Windermere FL
+Amount: $21.30
+
+Date: 06/22
+Description: GNC WINTER GARDEN FL
+Amount: $4.81
+
+Date: 06/23
+Description: SEPHORA DISNEY SPRINGS LAKE BUENA VI FL
+Amount: $72.21
+
+Date: 06/24
+Description: ACE SHIELD GROUP WINTER GARDEN FL
+Amount: $25.56
+
+Date: 06/24
+Description: JUICY POT RESTAURANT ORLANDO FL
+Amount: $38.11
+
+Date: 06/25
+Description: Waffle House ORLANDO FL
+Amount: $9.25
+
+Date: 06/25
+Description: WAWA 5160 ORLANDO FL
+Amount: $5.45
+
+Date: 06/29
+Description: PHP NAA FEE 469-917-4600 TX
+Amount: $199.00
+
+Date: 06/28
+Description: GNC WINTER GARDEN FL
+Amount: $30.00
+
+Date: 06/30
+Description: EXCEL TESTING SOLUTIONS 314-590-7133 FL
+Amount: $19.95
